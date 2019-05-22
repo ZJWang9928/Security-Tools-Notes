@@ -17,8 +17,13 @@ Linux、Unix系统默认安装(说是这么说但是manjaro下没有，pacman一
 
 筛选：
 	-n 不解析域名，显示IP地址
-	tcpdump -n -r http.cap | awk'{print $3}' | sort -u
-	tcpdump -n src host 145.254.160.237 -r http.cap
-	tcpdump -n dst host 145.254.160.237 -r http.cap
-	tcpdump -n port 53 -r http.cap
-	tcpdump -nX port 80 -r http.cap
+	用管道:
+		tcpdump -n -r http.cap | awk'{print $3}' | sort -u
+	按来源IP:
+		tcpdump -n src host 145.254.160.237 -r http.cap
+	按目标IP:
+		tcpdump -n dst host 145.254.160.237 -r http.cap
+	按端口号:
+		tcpdump -n port 53 -r http.cap
+		tcpdump -nX port 80 -r http.cap
+	高级筛选
