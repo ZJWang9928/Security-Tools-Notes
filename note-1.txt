@@ -99,3 +99,6 @@ TTL(Time to live)
 		HTTP/1.1\r\n结尾
 	FTP也是基于TCP协议的应用层协议
 	wireshark默认通过端口来识别协议，如HTTP通常在80，若在8080则不会按HTTP解析，可以右键选择decode as来手动选择协议
+
+数据流：
+	HTTP、SMTP、POP3、SSL
