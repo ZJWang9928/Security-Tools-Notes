@@ -68,6 +68,7 @@ B: ncat -nv 1.1.1.1 333 --ssl
 
 3.wireshark
 manjaro安装GUI版本：yaourt -S wireshark-qt
+需用sudo wireshark图形化版本以顺利使用全部功能
 抓包嗅探协议分析
 安全专家必备的技能
 抓包引擎
@@ -83,4 +84,3 @@ manjaro安装GUI版本：yaourt -S wireshark-qt
 
 实时抓包，停止后可以保存，建议使用pcap格式(兼容性较高)
 Edit->Preferences调整界面布局等首选项内容
-
