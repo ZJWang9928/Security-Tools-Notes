@@ -106,3 +106,9 @@ TTL(Time to live)
 	右键包 follow xxx stream
 	HTTP,SMTP,POP3基本上是完全明文传输的，提倡用SSL(Secure Sockets Layer)等加密
 	SSL加密通信过程中，最初的几个包进行SSL公钥传输及加密秘钥的交换，信息会以明文形式传输，但这些信息无法用于解密
+
+信息统计：
+	wireshark官网下有各类协议的学习文件
+	大多statistics菜单下
+	protocol hierarchy 可查看当前抓的数据包都是什么协议类型
+		DNS占比过大时往往不正常
