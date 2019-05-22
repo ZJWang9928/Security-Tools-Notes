@@ -1,3 +1,14 @@
 1.tcpdump
 no-GUI的抓包分析工具
-Linux、Unix系统默认安装
+Linux、Unix系统默认安装(说是这么说但是manjaro下没有，pacman一下即可)
+抓包：
+	默认只抓68个字节
+	-i interface
+	-s snaplen 大小
+	-w file
+	tcpdump -i eth0 -s 0 -w file.pcap
+	tcpdump -i eth0 port 22 (筛选器)
+读取抓包文件：
+	tcpdump [-A] -r file.pcap
+	-A 以ascii码显示
+	-X 以十六进制显示
