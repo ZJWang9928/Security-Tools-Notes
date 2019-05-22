@@ -75,3 +75,4 @@ manjaro安装GUI版本：yaourt -S wireshark-qt
 	Winpcap10——Windows
 解码能力(衡量抓包工具优劣的重要指标)
 若不勾选使用混杂模式，不会抓取发送给本地IP地址之外的包
+可用抓包筛选器过滤掉不想要的包
