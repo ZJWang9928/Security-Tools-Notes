@@ -77,3 +77,4 @@ manjaro安装GUI版本：yaourt -S wireshark-qt
 若不勾选使用混杂模式，不会抓取发送给本地IP地址之外的包
 可用抓包筛选器过滤掉不想要的包
 实时抓包，停止后可以保存，建议使用pcap格式(兼容性较高)
+Edit->Preferences调整界面布局等首选项内容
