@@ -126,7 +126,7 @@ wireshark抓大流量时略有欠缺,但应用很广，有很多基于wireshark�
 
 4.tcpdump
 no-GUI的抓包分析工具
-Linux、Unix系统默认安装(说是这么说但是manjaro下没有，pacman一下即可)
+Linux、Unix系统默认安装(说是这么说但是manjaro下没有，pacman安装一下即可)
 
 抓包：
     默认只抓68个字节
