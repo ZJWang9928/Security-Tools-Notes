@@ -123,3 +123,35 @@ wireshark抓大流量时略有欠缺,但应用很广，有很多基于wireshark�
 	Cace/riverbed
 	Cascad pilot
 	全流量抓包，需要一个镜像端口
+
+4.tcpdump
+no-GUI的抓包分析工具
+Linux、Unix系统默认安装(说是这么说但是manjaro下没有，pacman一下即可)
+
+抓包：
+    默认只抓68个字节
+    -i interface
+    -s snaplen 大小
+    -w file
+    tcpdump -i eth0 -s 0 -w file.pcap
+    tcpdump -i eth0 port 22 (筛选器)
+
+读取抓包文件：
+    tcpdump [-A] -r file.pcap
+    -A 以ascii码显示
+    -X 以十六进制显示
+
+筛选：
+    -n 不解析域名，显示IP地址
+    用管道:
+        tcpdump -n -r http.cap | awk'{print $3}' | sort -u
+    按来源IP:
+        tcpdump -n src host 145.254.160.237 -r http.cap
+    按目标IP:
+        tcpdump -n dst host 145.254.160.237 -r http.cap
+    按端口号:
+        tcpdump -n port 53 -r http.cap
+        tcpdump -nX port 80 -r http.cap
+    高级筛选:
+        按位01转化成十进制数,规定第x个字节的值
+        tcpdump -A -n 'tcp[13] = 24' -r http.cap
