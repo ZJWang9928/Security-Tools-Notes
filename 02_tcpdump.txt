@@ -26,4 +26,6 @@ Linux、Unix系统默认安装(说是这么说但是manjaro下没有，pacman一
 	按端口号:
 		tcpdump -n port 53 -r http.cap
 		tcpdump -nX port 80 -r http.cap
-	高级筛选
+	高级筛选:
+		按位01转化成十进制数,规定第x个字节的值
+		tcpdump -A -n 'tcp[13] = 24' -r http.cap
