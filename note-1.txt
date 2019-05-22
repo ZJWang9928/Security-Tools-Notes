@@ -88,10 +88,14 @@ Edit->Preferences调整界面布局等首选项内容
 TTL(Time to live)
 常见协议包：
 	数据包的分层结构(统计信息、二层报头、三层报头、四层报头...)
-	ARP,ICMP,TCP,UDP,DNS
+	ARP,ICMP,TCP,UDP,DNS,HTTP,FTP...
 	IP是三层报头
 	四层协议不仅是TCP(Protocol:6)和UDP(17)两种协议,0-255,ICMP(1),IGMP(2)...
 	二层报头先是源地址再是目的地址，三层报头先是目的地址再是源地址
 	TCP的三次握手: [SYN], [SYN, ACK], [ACK]
 	TCP开销相对于UDP较大
-	DNS是基于四层UDP协议之上的应用层协议
+	DNS是基于四层UDP协议之上的应用层协议,域名解析
+	HTTP是基于TCP协议的应用层协议
+		HTTP/1.1\r\n结尾
+	FTP也是基于TCP协议的应用层协议
+	wireshark默认通过端口来识别协议，如HTTP通常在80，若在8080则不会按HTTP解析，可以右键选择decode as来手动选择协议
