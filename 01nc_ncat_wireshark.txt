@@ -116,3 +116,10 @@ TTL(Time to live)
 		DNS占比过大时往往不正常
 	Conversation 查看两台机期间产生的会话及产生的数据量(查看中僵尸程序的服务器)
 	Expert Info 专家系统信息提示
+
+wireshark抓大流量时略有欠缺,但应用很广，有很多基于wireshark开发的抓包软件
+企业抓包部署方案：
+	Sniffer
+	Cace/riverbed
+	Cascad pilot
+	全流量抓包，需要一个镜像端口
