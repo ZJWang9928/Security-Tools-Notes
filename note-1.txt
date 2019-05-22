@@ -64,4 +64,4 @@ ncat包含于nmap工具包中
 --allow 允许连接的IP地址
 A: ncat -c bash --allow 192.168.20.14 -vnl 333 --ssl(用ssl加密)
 B: ncat -nv 1.1.1.1 333 --ssl
-注：不同系统/平台的nv参数功能不尽相同
+注：不同系统/平台的nc参数功能不尽相同
