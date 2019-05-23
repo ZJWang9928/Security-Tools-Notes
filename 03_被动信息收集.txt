@@ -67,6 +67,7 @@ manjaro(archlinux)下，ifconfig、route在net-tools中，nslookup、dig在dnsut
 	dig sina.com any @8.8.8.8
 	dig sina.com any
 	真实使用时可使用多个server多查询几次
+	注：加了any也只查sina.com，不查www.sina.com等
 
 	输出信息筛选：
 	dig +noall sina.com any 什么都不显示
@@ -78,6 +79,8 @@ manjaro(archlinux)下，ifconfig、route在net-tools中，nslookup、dig在dnsut
 
 	查一个DNS服务器所使用的bind版本信息：
 	dig +notall +answer txt chaos VERSION.BIND @ns3.dnsv4.com
+	bind对应chaos类
+	若BIND版本较老或存在漏洞，就有机会把DNS服务器中所有记录获取出来
 
 	DNS追踪：
 	dig +trace example.com
