@@ -63,5 +63,13 @@ manjaro(archlinux)下，ifconfig、route在net-tools中，nslookup、dig在dnsut
 
 2.dig —— DNS信息收集
 	
-	dig @8.8.8.8 www.sina.com mx
-	dig www.sina.com any
+	dig @8.8.8.8 sina.com mx
+	dig sina.com any @8.8.8.8
+	dig sina.com any
+	真实使用时可使用多个server多查询几次
+
+	反向查询：
+	dig +noall sina.com any 什么都不显示
+	dig +noall + answer sina.com any 只看answer
+	dig +noall + answer sina.com any | awk '{print$5}'
+
