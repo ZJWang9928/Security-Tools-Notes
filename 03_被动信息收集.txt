@@ -75,3 +75,9 @@ manjaro(archlinux)下，ifconfig、route在net-tools中，nslookup、dig在dnsut
 
 	反向解析：
 	dig +notall +answer -x 220.181.14.157
+
+	查一个DNS服务器所使用的bind版本信息：
+	dig +notall +answer txt chaos VERSION.BIND @ns3.dnsv4.com
+
+	DNS追踪：
+	dig +trace example.com
