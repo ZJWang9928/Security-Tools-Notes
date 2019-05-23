@@ -46,4 +46,14 @@ Passive reconnaissance(no direct interaction)
 manjaro(archlinux)下，ifconfig、route在net-tools中，nslookup、dig在dnsutils中，ftp、telnet等在inetutils中，ip命令在iproute2中
 
 1.nslookup
+
+nslookup www.sina.com
+
+> server 202.106.0.20 设置使用指定的域名服务器
+智能DNS：终端用户所处网络不同，DNS返回的查询结果可能是不一样的,让访问流量尽量发生在本地网络
+
 > set type=mx 设置查对应的mx记录
+或
+> set q=mx/a/ns/any
+
+一个域名可以解析成多个IP记录、cname记录
