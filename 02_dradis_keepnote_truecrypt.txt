@@ -8,3 +8,10 @@
 3.truecrypt
 	加密工具
 	已停止更新(官方原因是安全性不够，但实际使用却依然较安全)
+
+	cerate volume创建文件或卷(U盘硬盘等全盘加密)
+	标准加密卷
+	隐藏加密卷：若被人强迫输入加密密码，可以输入一个密码打开后什么都没有(outer volume)，重要信息存在一块隐藏空间(hidden volume)里
+	hidden volume大小不能超过outer volume
+	就像挂载一块硬盘分区
+	不使用时dismount
