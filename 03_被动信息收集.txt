@@ -60,3 +60,8 @@ manjaro(archlinux)下，ifconfig、route在net-tools中，nslookup、dig在dnsut
 	一个域名可以解析成多个IP记录、cname记录
 
 	nslookup -q=any 163.com [114.114.114.114(指定server)]
+
+2.dig —— DNS信息收集
+	
+	dig @8.8.8.8 www.sina.com mx
+	dig www.sina.com any
