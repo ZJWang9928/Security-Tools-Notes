@@ -68,8 +68,10 @@ manjaro(archlinux)下，ifconfig、route在net-tools中，nslookup、dig在dnsut
 	dig sina.com any
 	真实使用时可使用多个server多查询几次
 
-	反向查询：
+	输出信息筛选：
 	dig +noall sina.com any 什么都不显示
-	dig +noall + answer sina.com any 只看answer
-	dig +noall + answer sina.com any | awk '{print$5}'
+	dig +noall +answer sina.com any 只看answer
+	dig +noall +answer sina.com any | awk '{print$5}'
 
+	反向解析：
+	dig +notall +answer -x 220.181.14.157
