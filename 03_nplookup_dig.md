@@ -80,6 +80,12 @@ DNS服务器与各个域名服务器之间——迭代查询
 	若BIND版本较老或存在漏洞，就有机会把DNS服务器中所有记录获取出来  
 
 #### DNS追踪：  
-	dig +trace example.com  
-	发生域名服务器别劫持的情况时
-	舍弃一部分递归查询，直接访问域名服务器(./.com/...)
+	dig +trace example.com    
+	发生域名服务器别劫持的情况时     
+	舍弃一部分递归查询，直接访问域名服务器(./.com/...)    
+     
+**nplookup和dig都是在域名已知情况下查询，那么如何拿到一个域名服务器下的主机名并进而解析出IP地址呢？**      
+### DNS区域解析    
+	如果目标服务器有区域传输的匹配错误
+	dig @nsl.example.com example.com axfr
+	host -T -l sina.com 8.8.8.8
