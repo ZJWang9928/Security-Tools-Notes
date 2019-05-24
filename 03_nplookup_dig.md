@@ -39,7 +39,8 @@ Passive reconnaissance(no direct interaction) -> Normal interation -> Active rec
 * spf 反向解析，用于反垃圾邮件，对收到的邮件的来源IP地址做spf查询，若查询到的域名和IP地址不匹配，则判断为伪造域名的虚假邮件，拒收  
 			  
 www.sina.com.  
-缓存DNS服务器，本身不保存任何域名解析记录，接收到请求后发给根域服务器(.)，返回.com.域的域名服务器地址，再向.com服务器发送请求，返回sina.com.的域名服务器地址，再发起访问，返回www.sina.com.对应的IP地址，缓存DNS服务器拿到后保存一份，保存一个TTL的时间，返回给客户端，客户端再用IP地址进行访问        
+缓存DNS服务器，本身不保存任何域名解析记录，接收到请求后发给根域服务器(.)，返回.com.域的域名服务器地址，再向.com服务器发送请求，返回sina.com.的域名服务器地址，再发起访问，返回www.sina.com.对应的IP地址，缓存DNS服务器拿到后保存一份，保存一个TTL的时间，返回给客户端，客户端再用IP地址进行访问   
+      
 DNS客户端与DNS服务器之间——递归查询  
 DNS服务器与各个域名服务器之间——迭代查询  
 
