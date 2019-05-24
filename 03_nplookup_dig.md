@@ -85,13 +85,16 @@ DNS服务器与各个域名服务器之间——迭代查询
 	舍弃一部分递归查询，直接访问域名服务器(./.com/...)    
      
 **nplookup和dig都是在域名已知情况下查询，那么如何拿到一个域名服务器下的主机名并进而解析出IP地址呢？**      
-#### DNS区域传输：    
+### DNS区域传输    
 	如果目标服务器有区域传输的匹配错误    
 	如果要对example.com这个域做区域传输，首先要指定它的一个域名服务器   
 	      
 	axfr (Full Zone Transfer) 完全区域传输，区域传输的传输方法，完全传送整个区域数据库
 	ixfr (Incremental Zone Transfer) 增量区域传输
 	dig @nsl.example.com example.com axfr
+	或
 	-T 使用TCP    
 	-l 使用AXFR
 	host -T -l sina.com 8.8.8.8
+   
+### DNS字典爆破
