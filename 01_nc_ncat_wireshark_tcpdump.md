@@ -2,12 +2,12 @@
 
 ### 1.netcat(nc) 
       
--v 显示详细输出内容  
--n 跟IP地址，不进行DNS解析  
--l 打开一个listen端口   
--p 端口号   
--q n 当标准输出完成后延迟n秒断开   
--z 扫描模式，不做I/O操作   
+	-v 显示详细输出内容  
+	-n 跟IP地址，不进行DNS解析  
+	-l 打开一个listen端口   
+	-p 端口号   
+	-q n 当标准输出完成后延迟n秒断开   
+	-z 扫描模式，不做I/O操作   
     
 #### (1)telnet/banner   
 	nc -vn ip地址 端口号   
@@ -64,9 +64,11 @@
 	nc缺乏加密和身份验证的能力   
 	    
 ncat包含于nmap工具包中   
+     
 	--allow 允许连接的IP地址   
 	A: ncat -c bash --allow 192.168.20.14 -vnl 333 --ssl(用ssl加密)   
 	B: ncat -nv 1.1.1.1 333 --ssl   
+	     
 注：不同系统/平台的nc参数功能不尽相同   
 
 ### 3.wireshark   
