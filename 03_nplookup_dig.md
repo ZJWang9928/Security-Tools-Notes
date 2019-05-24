@@ -5,9 +5,7 @@
 * 与目标系统不产生直接交互
 * 尽量避免留下一切痕迹
 
-Passive reconnaissance(no direct interaction)  
-	-> Normal interation  
-		-> Active reconnaissance  
+Passive reconnaissance(no direct interaction) -> Normal interation -> Active reconnaissance  
 
 **信息收集内容:**
 * IP地址段  
@@ -29,21 +27,21 @@ Passive reconnaissance(no direct interaction)
 
 **信息收集——DNS**
 **域名解析成IP地址**
-	域名: sina.com  
-	完全限定域名(FQDN): www.sina.com(sina.com域名下的一条主机记录)  
+域名: sina.com  
+完全限定域名(FQDN): www.sina.com(sina.com域名下的一条主机记录)  
 	  
-	域名记录:   
-			A 主机记录，把域名解析到IP地址  
-			C name 别名记录，把域名解析到另一个域名  
-			NS 域名服务器地址记录  
-			MX 邮件交换记录，邮件地址，SMTP地址  
-			ptr 反向解析记录，通过IP地址反向解析域名  
-			spf 反向解析，用于反垃圾邮件，对收到的邮件的来源IP地址做spf查询，若查询到的域名和IP地址不匹配，则判断为伪造域名的虚假邮件，拒收  
+域名记录:   
+* A 主机记录，把域名解析到IP地址  
+* C name 别名记录，把域名解析到另一个域名  
+* NS 域名服务器地址记录  
+* MX 邮件交换记录，邮件地址，SMTP地址  
+* ptr 反向解析记录，通过IP地址反向解析域名  
+* spf 反向解析，用于反垃圾邮件，对收到的邮件的来源IP地址做spf查询，若查询到的域名和IP地址不匹配，则判断为伪造域名的虚假邮件，拒收  
 			  
-	www.sina.com.  
-	缓存DNS服务器，本身不保存任何域名解析记录，接收到请求后发给根域服务器(.)，返回.com.域的域名服务器地址，再向.com服务器发送请求，返回sina.com.的域名服务器地址，再发起访问，返回www.sina.com.对应的IP地址，缓存DNS服务器拿到后保存一份，保存一个TTL的时间，返回给客户端，客户端再用IP地址进行访问        
-	DNS客户端与DNS服务器之间——递归查询  
-	DNS服务器与各个域名服务器之间——迭代查询  
+www.sina.com.  
+缓存DNS服务器，本身不保存任何域名解析记录，接收到请求后发给根域服务器(.)，返回.com.域的域名服务器地址，再向.com服务器发送请求，返回sina.com.的域名服务器地址，再发起访问，返回www.sina.com.对应的IP地址，缓存DNS服务器拿到后保存一份，保存一个TTL的时间，返回给客户端，客户端再用IP地址进行访问        
+DNS客户端与DNS服务器之间——递归查询  
+DNS服务器与各个域名服务器之间——迭代查询  
 
 *manjaro(archlinux)下，ifconfig、route在net-tools中，nslookup、dig在dnsutils中，ftp、telnet等在inetutils中，ip命令在iproute2中*  
 
