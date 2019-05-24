@@ -72,7 +72,7 @@ DNS服务器与各个域名服务器之间——迭代查询
 	dig +noall +answer sina.com any | awk '{print$5}'  
 
 	反向解析：  
-	dig +notall +answer -x 220.181.14.157  
+	dig +noall +answer -x 220.181.14.157  
 
 	查一个DNS服务器所使用的bind版本信息：  
 	dig +notall +answer txt chaos VERSION.BIND @ns3.dnsv4.com  
@@ -81,3 +81,5 @@ DNS服务器与各个域名服务器之间——迭代查询
 
 	DNS追踪：  
 	dig +trace example.com  
+	发生域名服务器别劫持的情况时
+	舍弃一部分递归查询，直接访问域名服务器
