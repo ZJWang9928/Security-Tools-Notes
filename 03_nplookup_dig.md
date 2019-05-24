@@ -66,20 +66,20 @@ DNS服务器与各个域名服务器之间——迭代查询
 	真实使用时可使用多个server多查询几次  
 	注：加了any也只查sina.com，不查www.sina.com等  
 
-	输出信息筛选：  
+#### 输出信息筛选：  
 	dig +noall sina.com any 什么都不显示  
 	dig +noall +answer sina.com any 只看answer  
 	dig +noall +answer sina.com any | awk '{print$5}'  
 
-	反向解析：  
+#### 反向解析：  
 	dig +noall +answer -x 220.181.14.157  
 
-	查一个DNS服务器所使用的bind版本信息：  
+#### 查一个DNS服务器所使用的bind版本信息：  
 	dig +notall +answer txt chaos VERSION.BIND @ns3.dnsv4.com  
 	bind对应chaos类  
 	若BIND版本较老或存在漏洞，就有机会把DNS服务器中所有记录获取出来  
 
-	DNS追踪：  
+#### DNS追踪：  
 	dig +trace example.com  
 	发生域名服务器别劫持的情况时
 	舍弃一部分递归查询，直接访问域名服务器(./.com/...)
