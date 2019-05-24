@@ -1,35 +1,34 @@
 # 被动信息收集
 
-"开源智能" (open source)
-OSINT
-都是公开渠道可获得的信息
-与目标系统不产生直接交互
-尽量避免留下一切痕迹
+"开源智能" (open source) OSINT
++ 都是公开渠道可获得的信息
++ 与目标系统不产生直接交互
++ 尽量避免留下一切痕迹
 
 Passive reconnaissance(no direct interaction)
 	-> Normal interation
 		-> Active reconnaissance
 
-信息收集内容:
-	IP地址段
-	域名信息
-	邮件地址
-	文档图片数据
-	公司地址
-	公司组织架构
-	联系电话/传真号码
-	人员姓名/职务
-	目标系统使用的技术架构
-	公开的商业信息
+### 信息收集内容:
+	* IP地址段
+	* 域名信息
+	* 邮件地址
+	* 文档图片数据
+	* 公司地址
+	* 公司组织架构
+	* 联系电话/传真号码
+	* 人员姓名/职务
+	* 目标系统使用的技术架构
+	* 公开的商业信息
 
-信息用途:
-	用信息描述目标
-	发现
-	社会工程学攻击
-	物理缺口探测与渗透
+### 信息用途:
+	* 用信息描述目标
+	* 发现
+	* 社会工程学攻击
+	* 物理缺口探测与渗透
 
-信息收集——DNS
-域名解析成IP地址
+### 信息收集——DNS
+### 域名解析成IP地址
 	域名: sina.com
 	完全限定域名(FQDN): www.sina.com(sina.com域名下的一条主机记录)
 	域名记录: 
@@ -44,9 +43,9 @@ Passive reconnaissance(no direct interaction)
 	DNS客户端与DNS服务器之间——递归查询
 	DNS服务器与各个域名服务器之间——迭代查询
 
-manjaro(archlinux)下，ifconfig、route在net-tools中，nslookup、dig在dnsutils中，ftp、telnet等在inetutils中，ip命令在iproute2中
+* manjaro(archlinux)下，ifconfig、route在net-tools中，nslookup、dig在dnsutils中，ftp、telnet等在inetutils中，ip命令在iproute2中 *
 
-1.nslookup
+1. nslookup
 
 	nslookup www.sina.com
 
@@ -61,7 +60,7 @@ manjaro(archlinux)下，ifconfig、route在net-tools中，nslookup、dig在dnsut
 
 	nslookup -q=any 163.com [114.114.114.114(指定server)]
 
-2.dig —— DNS信息收集
+2. dig —— DNS信息收集
 	
 	dig @8.8.8.8 sina.com mx
 	dig sina.com any @8.8.8.8
