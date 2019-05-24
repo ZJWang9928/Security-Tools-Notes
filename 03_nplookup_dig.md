@@ -92,6 +92,6 @@ DNS服务器与各个域名服务器之间——迭代查询
 	axfr (Full Zone Transfer) 完全区域传输，区域传输的传输方法，完全传送整个区域数据库
 	ixfr (Incremental Zone Transfer) 增量区域传输
 	dig @nsl.example.com example.com axfr
-	-T 显示时间    
+	-T 使用TCP    
 	-l 使用AXFR
 	host -T -l sina.com 8.8.8.8
