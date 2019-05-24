@@ -25,10 +25,10 @@ Passive reconnaissance(no direct interaction) -> Normal interation -> Active rec
 * 社会工程学攻击  
 * 物理缺口探测与渗透  
 
-**信息收集——DNS**
-**域名解析成IP地址**
-域名: sina.com  
-完全限定域名(FQDN): www.sina.com(sina.com域名下的一条主机记录)  
+**信息收集——DNS**    
+**域名解析成IP地址**    
+域名: sina.com     
+完全限定域名(FQDN): www.sina.com(sina.com域名下的一条主机记录)      
 	  
 域名记录:   
 * A 主机记录，把域名解析到IP地址  
