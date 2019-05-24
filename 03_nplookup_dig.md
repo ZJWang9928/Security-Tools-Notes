@@ -9,7 +9,7 @@ Passive reconnaissance(no direct interaction)
 	-> Normal interation
 		-> Active reconnaissance
 
-### 信息收集内容:
+**信息收集内容:**
 	* IP地址段
 	* 域名信息
 	* 邮件地址
@@ -21,14 +21,14 @@ Passive reconnaissance(no direct interaction)
 	* 目标系统使用的技术架构
 	* 公开的商业信息
 
-### 信息用途:
+**信息用途:**
 	* 用信息描述目标
 	* 发现
 	* 社会工程学攻击
 	* 物理缺口探测与渗透
 
-### 信息收集——DNS
-### 域名解析成IP地址
+**信息收集——DNS**
+**域名解析成IP地址**
 	域名: sina.com
 	完全限定域名(FQDN): www.sina.com(sina.com域名下的一条主机记录)
 	域名记录: 
@@ -43,10 +43,10 @@ Passive reconnaissance(no direct interaction)
 	DNS客户端与DNS服务器之间——递归查询
 	DNS服务器与各个域名服务器之间——迭代查询
 
-* manjaro(archlinux)下，ifconfig、route在net-tools中，nslookup、dig在dnsutils中，ftp、telnet等在inetutils中，ip命令在iproute2中 *
+*manjaro(archlinux)下，ifconfig、route在net-tools中，nslookup、dig在dnsutils中，ftp、telnet等在inetutils中，ip命令在iproute2中*
 
-1. nslookup
-
+####1.nslookup
+	```
 	nslookup www.sina.com
 
 	> server 202.106.0.20 设置使用指定的域名服务器
@@ -59,9 +59,9 @@ Passive reconnaissance(no direct interaction)
 	一个域名可以解析成多个IP记录、cname记录
 
 	nslookup -q=any 163.com [114.114.114.114(指定server)]
-
-2. dig —— DNS信息收集
-	
+	```
+####2.dig —— DNS信息收集
+	```
 	dig @8.8.8.8 sina.com mx
 	dig sina.com any @8.8.8.8
 	dig sina.com any
@@ -83,3 +83,4 @@ Passive reconnaissance(no direct interaction)
 
 	DNS追踪：
 	dig +trace example.com
+	```
