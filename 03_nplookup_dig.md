@@ -88,6 +88,10 @@ DNS服务器与各个域名服务器之间——迭代查询
 #### DNS区域传输：    
 	如果目标服务器有区域传输的匹配错误    
 	如果要对example.com这个域做区域传输，首先要指定它的一个域名服务器   
-	axfr 差异化记录传输，区域传输的传输方法
+	      
+	axfr (Full Zone Transfer) 完全区域传输，区域传输的传输方法，完全传送整个区域数据库
+	ixfr (Incremental Zone Transfer) 增量区域传输
 	dig @nsl.example.com example.com axfr
+	-T 显示时间    
+	-l 使用AXFR
 	host -T -l sina.com 8.8.8.8
