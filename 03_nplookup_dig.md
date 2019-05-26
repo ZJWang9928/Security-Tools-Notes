@@ -101,5 +101,13 @@ DNS服务器与各个域名服务器之间——迭代查询
 **如果目标服务器没有疏忽它的配置，如何得到记录呢？**    
 ### 4.DNS字典爆破
 	准备一个字典，包含常用主机名，用这个字典向DNS服务器发起一个暴力破解
-	
+
+	fierce -dnsserver 8.8.8.8 -dns sina.com.cn -wordlist a.txt
+	fierce 先尝试区域传输，若失败则会进行字典爆破
+	安装: sudo pip3 install fierce
+
+	dnsdict6 -d4 -t 16 -x sina.com
+	-t 指定线程数
+	-d 显示ipv6信息
+	-4 显示ipv4信息
 	
