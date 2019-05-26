@@ -104,7 +104,8 @@ DNS服务器与各个域名服务器之间——迭代查询
     
 	fierce -dnsserver 8.8.8.8 -dns sina.com.cn -wordlist a.txt     
 	fierce 先尝试区域传输，若失败则会进行字典爆破     
-	安装: sudo pip3 install fierce      
+	安装: yay -S fierce      
+	fierce.pl ...
          
 	dnsdict6 -d4 -t 16 -x sina.com     
 	-t 指定线程数    
@@ -112,3 +113,9 @@ DNS服务器与各个域名服务器之间——迭代查询
 	-4 显示ipv4信息    
 	-[smlxu] 选择字典大小     
 	
+	dnsenum -f dnsbig.txt -dnsserver 8.8.8.8 sina.com -o sina.xml
+
+	dnsmap sina.com -w dnx.txt
+
+	dnsrecon -d sina.com --lifetime 10 -t brt -d dnsbig.txt
+	-t 查询强度,brt 爆破
