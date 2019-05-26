@@ -117,5 +117,6 @@ DNS服务器与各个域名服务器之间——迭代查询
 
 	dnsmap sina.com -w dnx.txt
 
-	dnsrecon -d sina.com --lifetime 10 -t brt -d dnsbig.txt
-	-t 查询强度,brt 爆破
+	dnsrecon -d sina.com --lifetime 10 -t brt -D dnsbig.txt
+	-t 查询强度,brt 爆破,std 标准
+	dnsrecon -t std -d sina.com
