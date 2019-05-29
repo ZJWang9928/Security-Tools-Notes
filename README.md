@@ -23,3 +23,4 @@
 * dnsmap
 * dnsrecon
 * whois
+* theharvester
