@@ -24,3 +24,4 @@
 * dnsrecon
 * whois
 * theharvester
+* metagoofil
