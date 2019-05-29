@@ -25,3 +25,4 @@
 * whois
 * theharvester
 * metagoofil
+* maltego
