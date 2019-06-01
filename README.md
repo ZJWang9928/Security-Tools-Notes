@@ -26,3 +26,4 @@
 * theharvester
 * metagoofil
 * maltego
+* cupp
