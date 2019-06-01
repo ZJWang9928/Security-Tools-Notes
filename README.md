@@ -27,3 +27,5 @@
 * metagoofil
 * maltego
 * cupp
+* exiftool
+* metadata
